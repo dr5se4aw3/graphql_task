@@ -1,0 +1,16 @@
+<h2>以下の内容で登録してよろしいですか？</h2>
+
+<%= form_with(model: @blog, local: true ) do |form| %>
+
+    <%= form.hidden_field :title %>
+    <%= form.hidden_field :content %>
+<%#こちらのformで送信する値を保持している。ただし、hidden_fieldが設定されているので画面上には現れず、編集もできない %>
+
+    <p>タイトル：<%= @blog.title%></p>
+    <p>本文：<%= @blog.content %></p>
+<%#ここはただ引数を表示しているだけ。formで送信される値とは無関係 %>
+  <%= form.submit "登録する"%>
+  <%= form.submit "入力画面に戻る", name: "back" %>
+<% end %>
+
+<p><%= link_to 'ブログ一覧画面へ', blogs_path %></p>
